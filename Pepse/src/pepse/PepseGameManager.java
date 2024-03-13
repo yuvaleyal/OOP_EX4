@@ -17,10 +17,10 @@ import pepse.world.Block;
 import pepse.world.Terrain;
 import pepse.world.daynight.Night;
 import pepse.world.daynight.Sun;
+import pepse.world.daynight.SunHalo;
 
 public class PepseGameManager extends GameManager {
     private final int CYCLELENGTH = 30;
-    public  GameObject sun;
     public PepseGameManager() {
         super();
     }
@@ -41,15 +41,12 @@ public class PepseGameManager extends GameManager {
         }
         GameObject night = Night.create(windowDimensions, CYCLELENGTH);
         gameObjects().addGameObject(night, Layer.UI);
-        GameObject sun = Sun.create(windowDimensions, 30);
-        this.sun = sun;
+        GameObject sun = Sun.create(windowDimensions, CYCLELENGTH);
+        GameObject sunHalo = SunHalo.create(sun);
+        sunHalo.addComponent((float deltaTime) -> {sunHalo.setCenter(sun.getCenter());});
         gameObjects().addGameObject(sun, Layer.BACKGROUND);
-    }
+        gameObjects().addGameObject(sunHalo, Layer.BACKGROUND);
 
-    @Override
-    public void update(float deltaTime) {
-        super.update(deltaTime);
-        System.out.println(this.sun.getCenter());
     }
 
     public static void main(String[] args) {
