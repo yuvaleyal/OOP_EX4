@@ -13,6 +13,7 @@ import danogl.gui.UserInputListener;
 import danogl.gui.WindowController;
 import danogl.util.Vector2;
 import pepse.world.Sky;
+import pepse.world.Avatar;
 import pepse.world.Block;
 import pepse.world.Terrain;
 import pepse.world.daynight.Night;
@@ -41,12 +42,14 @@ public class PepseGameManager extends GameManager {
         }
         GameObject night = Night.create(windowDimensions, CYCLELENGTH);
         gameObjects().addGameObject(night, Layer.UI);
-        GameObject sun = Sun.create(windowDimensions, CYCLELENGTH);
+        GameObject sun = Sun.create(windowDimensions, CYCLELENGTH*2);
         GameObject sunHalo = SunHalo.create(sun);
         sunHalo.addComponent((float deltaTime) -> {sunHalo.setCenter(sun.getCenter());});
         gameObjects().addGameObject(sun, Layer.BACKGROUND);
         gameObjects().addGameObject(sunHalo, Layer.BACKGROUND);
-
+        Vector2 pos = new Vector2(20,terrain.groundHeightAt(20) - Block.SIZE);
+        Avatar avater = new Avatar(pos, inputListener, imageReader);
+        gameObjects().addGameObject(avater);
     }
 
     public static void main(String[] args) {
