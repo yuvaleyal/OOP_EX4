@@ -20,7 +20,7 @@ public class Night {
         GameObject night = new GameObject(Vector2.ZERO, windowDimensions, renderable);
         night.setCoordinateSpace(CoordinateSpace.CAMERA_COORDINATES);
         night.setTag(NIGHT_TAG);
-        Transition transition = new Transition<Float>(night, night.renderer()::setOpaqueness
+        new Transition<Float>(night, night.renderer()::setOpaqueness
         , 0.0f, MIDNIGHT_OPACITY, Transition.CUBIC_INTERPOLATOR_FLOAT, cycleLength,
          TransitionType.TRANSITION_BACK_AND_FORTH, null);
         return night;
