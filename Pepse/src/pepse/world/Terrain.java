@@ -25,15 +25,15 @@ public class Terrain {
         }
 
     public float groundHeightAt(float x) {
-            float noise = (float) noiseGenerator.noise(x, Block.SIZE *7);
+            float noise = (float) noiseGenerator.noise(x, Block.getSize() *7);
             return groundHeightAtX0 + noise;
         }
     public List<Block> createInRange(int minX, int maxX) {
         List<Block> blocks = new ArrayList<>();
-        for (int x = minX; x <= maxX; x+= Block.SIZE) {
+        for (int x = minX; x <= maxX; x+= Block.getSize()) {
             for (int i = 0; i < TERRAIN_DEPTH; i++) {
-                float block_height = (float)Math.floor(groundHeightAt(x) / Block.SIZE) * 
-                Block.SIZE + i*Block.SIZE;
+                float block_height = (float)Math.floor(groundHeightAt(x) / Block.getSize()) * 
+                Block.getSize() + i*Block.getSize();
                 Vector2 block_position = new Vector2(x, block_height);
                 Renderable renderable = new RectangleRenderable
                 (ColorSupplier.approximateColor(BASE_GROUND_COLOR));

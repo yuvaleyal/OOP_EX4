@@ -6,7 +6,7 @@ import danogl.gui.rendering.Renderable;
 import danogl.util.Vector2;
 
 public class Block extends GameObject{
-    public static final int SIZE = 30;
+    private static final int SIZE = 30;
     private static final String BLOCKTAG = "ground_block";
     
     public Block(Vector2 topLeftCorner, Renderable renderable) {
@@ -16,4 +16,7 @@ public class Block extends GameObject{
         setTag(BLOCKTAG);
     }
 
+    public static int getSize(){
+        return Block.SIZE;
+    }
 }

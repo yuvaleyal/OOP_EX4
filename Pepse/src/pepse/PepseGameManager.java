@@ -47,7 +47,7 @@ public class PepseGameManager extends GameManager {
         sunHalo.addComponent((float deltaTime) -> {sunHalo.setCenter(sun.getCenter());});
         gameObjects().addGameObject(sun, Layer.BACKGROUND);
         gameObjects().addGameObject(sunHalo, Layer.BACKGROUND);
-        Vector2 pos = new Vector2(20,terrain.groundHeightAt(20) - Block.SIZE);
+        Vector2 pos = new Vector2(20,terrain.groundHeightAt(20) - Block.getSize());
         Avatar avater = new Avatar(pos, inputListener, imageReader);
         gameObjects().addGameObject(avater);
     }
