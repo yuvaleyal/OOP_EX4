@@ -13,6 +13,9 @@ import danogl.components.Transition.TransitionType;
 import danogl.gui.rendering.RectangleRenderable;
 import danogl.util.Vector2;
 
+/**
+ * Represents a collection of leaves in the game.
+ */
 public class Leaves {
     private static final Random random = new Random();
     private static final double SPAWNING_PROBABILITY = 0.6;
@@ -20,9 +23,10 @@ public class Leaves {
     private List<Leaf> leaves;
 
     /**
+     * Constructs a collection of leaves with the specified number of leaves and bottom middle position.
      * 
-     * @param numOfLeaves: expects a non-even number
-     * @param bottomMiddle
+     * @param numOfLeaves The number of leaves.
+     * @param bottomMiddle The bottom middle position.
      */
     public Leaves(int numOfLeaves, Vector2 bottomMiddle) {
         int leafSize = Leaf.getSize();
@@ -43,6 +47,11 @@ public class Leaves {
         setTransitions();
     }
 
+     /**
+     * Adds the leaves to the specified game object collection.
+     * 
+     * @param collection The game object collection to add the leaves to.
+     */
     public void addLeaves(GameObjectCollection collection) {
         for (Leaf leaf : leaves) {
             collection.addGameObject(leaf, LEAVES_LAYER);

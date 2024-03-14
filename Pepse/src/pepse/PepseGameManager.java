@@ -23,13 +23,27 @@ import pepse.world.daynight.SunHalo;
 import pepse.world.trees.Flora;
 import pepse.world.trees.Tree;
 
+/**
+ * Represents the game manager for the Pepse game.
+ */
 public class PepseGameManager extends GameManager {
     private final int CYCLELENGTH = 30;
 
+    /**
+     * Constructs a PepseGameManager object.
+     */
     public PepseGameManager() {
         super();
     }
 
+    /**
+     * Initializes the Pepse game.
+     * 
+     * @param imageReader     The image reader for loading game images.
+     * @param soundReader     The sound reader for loading game sounds.
+     * @param inputListener   The user input listener for handling input events.
+     * @param windowController The window controller for managing the game window.
+     */
     @Override
     public void initializeGame(ImageReader imageReader, SoundReader soundReader,
             UserInputListener inputListener, WindowController windowController) {
@@ -69,6 +83,11 @@ public class PepseGameManager extends GameManager {
         }
     }
 
+    /**
+     * The main method to start the Pepse game.
+     * 
+     * @param args Command-line arguments.
+     */
     public static void main(String[] args) {
         PepseGameManager gameManager = new PepseGameManager();
         gameManager.run();

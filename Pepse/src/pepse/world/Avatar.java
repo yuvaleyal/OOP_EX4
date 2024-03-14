@@ -8,7 +8,9 @@ import danogl.gui.rendering.Renderable;
 import danogl.util.Vector2;
 import java.awt.event.KeyEvent;
 
-
+/**
+ * Represents the avatar character in the game.
+ */
 public class Avatar extends GameObject{
     private final static float AVATARSIZE = 50f;
     private final static String AVATERORIGINALPIC = "Pepse\\src\\pepse\\assets\\assets\\idle_0.png";
@@ -47,6 +49,13 @@ public class Avatar extends GameObject{
     private AnimationRenderable runningAnimationRenderable;
 
 
+    /**
+     * Constructs an Avatar object with the specified position, input listener, and image reader.
+     * 
+     * @param pos The position of the avatar.
+     * @param inputListener The input listener for controlling the avatar.
+     * @param imageReader The image reader for reading avatar images.
+     */
     public Avatar(Vector2 pos, UserInputListener inputListener, ImageReader imageReader){
         super(pos, Vector2.ONES.mult(AVATARSIZE),
          imageReader.readImage(AVATERORIGINALPIC, true));
@@ -78,6 +87,11 @@ public class Avatar extends GameObject{
         this.setTag(AVATARTAG);
     }
 
+     /**
+     * Updates the avatar's state based on the input and time elapsed.
+     * 
+     * @param deltaTime The time elapsed since the last update.
+     */
     @Override
     public void update(float deltaTime) {
         super.update(deltaTime);
@@ -126,6 +140,11 @@ public class Avatar extends GameObject{
         }
     }
 
+    /**
+     * Increases the energy of the avatar by the specified amount.
+     * 
+     * @param energyToGain The amount of energy to increase.
+     */
     public void energyGain(float energyToGain){
         if (this.energy + energyToGain > MAXENERGY){
             this.energy = MAXENERGY;
@@ -135,10 +154,20 @@ public class Avatar extends GameObject{
         }
     }
 
+    /**
+     * Retrieves the energy of the avatar.
+     * 
+     * @return The energy of the avatar.
+     */
     public float getEnergy(){
         return this.energy;
     }
 
+     /**
+     * Retrieves the tag of the avatar.
+     * 
+     * @return The tag of the avatar.
+     */
     public static String getAvatarTag(){
         return AVATARTAG;
     }

@@ -11,10 +11,21 @@ import danogl.gui.rendering.Renderable;
 import danogl.util.Vector2;
 import pepse.util.ColorSupplier;
 
+/**
+ * Represents the night environment in the game.
+ */
 public class Night {
     private static final String NIGHT_TAG = "night";
     private static final Float MIDNIGHT_OPACITY = 0.5f;
 
+    
+    /**
+     * Creates a GameObject representing the night environment.
+     * 
+     * @param windowDimensions The dimensions of the game window.
+     * @param cycleLength The length of the cycle for opacity transition.
+     * @return A GameObject representing the night environment.
+     */
     public static GameObject create(Vector2 windowDimensions,float cycleLength){
         Renderable renderable = new RectangleRenderable(Color.BLACK);
         GameObject night = new GameObject(Vector2.ZERO, windowDimensions, renderable);

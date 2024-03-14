@@ -10,6 +10,9 @@ import danogl.gui.rendering.RectangleRenderable;
 import danogl.util.Vector2;
 import pepse.world.Block;
 
+/**
+ * Represents a leaf object in the game.
+ */
 public class Leaf extends Block {
     private static final Color BASIC_COLOR = new Color(50, 200, 30);
     private static final float FINAL_ROTATING_ANGLE = 360f;
@@ -18,10 +21,18 @@ public class Leaf extends Block {
     private static final float MAX_WIDTH = 60f;
     private static final Random random = new Random();
 
+    /**
+     * Constructs a leaf object with the specified top-left corner position.
+     * 
+     * @param topLeftCorner The top-left corner position of the leaf.
+     */
     public Leaf(Vector2 topLeftCorner) {
         super(topLeftCorner, new RectangleRenderable(BASIC_COLOR));
     }
 
+    /**
+     * Adds a transition effect to the leaf object.
+     */
     public void addTransition() {
         new ScheduledTask(this, (float) random.nextDouble(), false,
                 () -> setTransition());

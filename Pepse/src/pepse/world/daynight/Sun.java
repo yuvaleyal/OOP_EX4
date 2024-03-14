@@ -10,6 +10,9 @@ import danogl.gui.rendering.OvalRenderable;
 import danogl.gui.rendering.Renderable;
 import danogl.util.Vector2;
 
+/**
+ * Represents the Sun in the game environment.
+ */
 public class Sun {
     private static final int SUN_SIZE = 100;
     private static final String SUN_TAG = "sun";
@@ -17,7 +20,12 @@ public class Sun {
     private static final int STARTINGPLACEPARAMX = 2;
     private static final int STARTINGPLACEPARAMY = 3;
 
-    
+    /**
+     * Creates a sun object with the specified window dimensions and cycle length.
+     * @param windowDimensions The dimensions of the window.
+     * @param cycleLength The length of the cycle.
+     * @return A GameObject representing the sun.
+     */
     public static GameObject create(Vector2 windowDimensions, float cycleLength) {
         Renderable renderable = new OvalRenderable(Color.YELLOW);
         Vector2 starting_place = new Vector2(windowDimensions.x() / STARTINGPLACEPARAMX,
