@@ -15,6 +15,7 @@ public class Avatar extends GameObject{
     private static final float GRAVITY = 600;
     private static final float VELOCITY_X = 400;
     private static final float VELOCITY_Y = -300;
+    private static final String AVATARTAG = "avatar";
     private final float RUNNINGCOST = 0.5f;
     private final float JUMPCOST = 10f;
     private final float ANIMATINGTIME = 0.2f;
@@ -74,6 +75,7 @@ public class Avatar extends GameObject{
         this.idleAnimationRenderable  = 
         new AnimationRenderable(IDLEFRAMES, ANIMATINGTIME);
         this.renderer().setRenderable(idleAnimationRenderable);
+        this.setTag(AVATARTAG);
     }
 
     @Override
@@ -135,5 +137,9 @@ public class Avatar extends GameObject{
 
     public float getEnergy(){
         return this.energy;
+    }
+
+    public static String getAvatarTag(){
+        return AVATARTAG;
     }
 }

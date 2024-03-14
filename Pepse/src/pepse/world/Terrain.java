@@ -11,6 +11,9 @@ import danogl.util.Vector2;
 import pepse.util.ColorSupplier;
 import pepse.util.NoiseGenerator;
 
+/**
+ * Represents the terrain in the game environment.
+ */
 public class Terrain {
     private final float groundHeightAtX0;
     private static final Color BASE_GROUND_COLOR = new Color(212, 123,74);
@@ -20,16 +23,33 @@ public class Terrain {
     private final NoiseGenerator noiseGenerator;
     private double seed;
     
+    /**
+     * Constructs a Terrain object with the specified window dimensions and seed.
+     * @param windowDimensions The dimensions of the game window.
+     * @param seed The seed used for generating pseudo-random noise.
+     */
     public Terrain(Vector2 windowDimensions, int seed){
             this.groundHeightAtX0 = (float) (windowDimensions.y()*(GROUNDHEIGHTMULT));
             this.seed = seed;
             this.noiseGenerator = new NoiseGenerator(this.seed, (int)groundHeightAtX0);
         }
 
+    /**
+     * Gets the ground height at the specified x-coordinate.
+     * @param x The x-coordinate.
+     * @return The ground height at the specified x-coordinate.
+     */
     public float groundHeightAt(float x) {
             float noise = (float) noiseGenerator.noise(x, Block.getSize() * NOISEGENMULT);
             return groundHeightAtX0 + noise;
         }
+    
+     /**
+     * Creates a list of blocks within the specified range.
+     * @param minX The minimum x-coordinate.
+     * @param maxX The maximum x-coordinate.
+     * @return The list of blocks within the specified range.
+     */
     public List<Block> createInRange(int minX, int maxX) {
         List<Block> blocks = new ArrayList<>();
         for (int x = minX; x <= maxX; x+= Block.getSize()) {

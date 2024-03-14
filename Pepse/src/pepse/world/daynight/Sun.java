@@ -17,6 +17,7 @@ public class Sun {
     private static final int STARTINGPLACEPARAMX = 2;
     private static final int STARTINGPLACEPARAMY = 3;
 
+    
     public static GameObject create(Vector2 windowDimensions, float cycleLength) {
         Renderable renderable = new OvalRenderable(Color.YELLOW);
         Vector2 starting_place = new Vector2(windowDimensions.x() / STARTINGPLACEPARAMX,
