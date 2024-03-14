@@ -15,17 +15,19 @@ public class Terrain {
     private final float groundHeightAtX0;
     private static final Color BASE_GROUND_COLOR = new Color(212, 123,74);
     private static final int TERRAIN_DEPTH = 20;
+    private final double GROUNDHEIGHTMULT = 2.0/3.0;
+    private final int NOISEGENMULT = 7;
     private final NoiseGenerator noiseGenerator;
     private double seed;
     
     public Terrain(Vector2 windowDimensions, int seed){
-            this.groundHeightAtX0 = (float) (windowDimensions.y()*(2.0/3.0));
+            this.groundHeightAtX0 = (float) (windowDimensions.y()*(GROUNDHEIGHTMULT));
             this.seed = seed;
             this.noiseGenerator = new NoiseGenerator(this.seed, (int)groundHeightAtX0);
         }
 
     public float groundHeightAt(float x) {
-            float noise = (float) noiseGenerator.noise(x, Block.getSize() *7);
+            float noise = (float) noiseGenerator.noise(x, Block.getSize() * NOISEGENMULT);
             return groundHeightAtX0 + noise;
         }
     public List<Block> createInRange(int minX, int maxX) {

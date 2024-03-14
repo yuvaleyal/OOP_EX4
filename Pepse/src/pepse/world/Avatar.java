@@ -14,8 +14,9 @@ public class Avatar extends GameObject{
     private final static String AVATERORIGINALPIC = "Pepse\\src\\pepse\\assets\\assets\\idle_0.png";
     private static final float GRAVITY = 600;
     private static final float VELOCITY_X = 400;
-    private static final float VELOCITY_Y = -200;
-    private static final int IDLEFRAMESAMOUNT = 4;
+    private static final float VELOCITY_Y = -250;
+    private final float RUNNINGCOST = 0.5f;
+    private final float JUMPCOST = 10f;
     private final float ANIMATINGTIME = 0.2f;
     private final float MAXENERGY = 100;
     private final String[] IDLEPICS = new String[] 
@@ -81,18 +82,18 @@ public class Avatar extends GameObject{
         float xVel = 0;
         int flag = 0;
         if(inputListener.isKeyPressed(KeyEvent.VK_LEFT)){
-            if (this.energy >= 0.5){
+            if (this.energy >= RUNNINGCOST){
                 xVel -= VELOCITY_X;
-                this.energy = this.energy-0.5f;
+                this.energy = this.energy-RUNNINGCOST;
                 flag = 1;
                 this.renderer().setRenderable(runningAnimationRenderable);
                 this.renderer().setIsFlippedHorizontally(true);
             }
         }
         if(inputListener.isKeyPressed(KeyEvent.VK_RIGHT)){
-            if (this.energy >= 0.5){
+            if (this.energy >= RUNNINGCOST){
                 xVel += VELOCITY_X;
-                this.energy = this.energy-0.5f;
+                this.energy = this.energy-RUNNINGCOST;
                 flag = 1;
                 this.renderer().setRenderable(runningAnimationRenderable);
                 this.renderer().setIsFlippedHorizontally(false);
@@ -100,9 +101,9 @@ public class Avatar extends GameObject{
         }
         transform().setVelocityX(xVel);
         if(inputListener.isKeyPressed(KeyEvent.VK_SPACE) && getVelocity().y() == 0){
-            if (this.energy >= 10){
+            if (this.energy >= JUMPCOST){
                 transform().setVelocityY(VELOCITY_Y);
-                this.energy = this.energy - 10f;
+                this.energy = this.energy - JUMPCOST;
                 flag = 1;
                 this.renderer().setRenderable(jumpingAnimationRenderable);
             }
@@ -118,7 +119,7 @@ public class Avatar extends GameObject{
 
     public void energyGain(float energyToGain){
         if (this.energy + energyToGain > MAXENERGY){
-            this.energy = 100;
+            this.energy = MAXENERGY;
         }
         else{
             this.energy = this.energy + energyToGain;
