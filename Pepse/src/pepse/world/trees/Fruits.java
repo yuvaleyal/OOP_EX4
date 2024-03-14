@@ -56,6 +56,11 @@ public class Fruits {
         }
     }
 
+    /**
+     * Changes the color of all the fruits.
+     * 
+     * @param color The new color to apply to the fruits.
+     */
     public void changeColor(Color color) {
         for (Fruit fruit : fruits) {
             fruit.renderer().setRenderable(new OvalRenderable(color));

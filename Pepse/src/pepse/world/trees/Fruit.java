@@ -29,15 +29,32 @@ public class Fruit extends Block {
         isInGame = true;
     }
 
+    /**
+     * Sets the cycle length for the game.
+     * 
+     * @param length The length of the game cycle.
+     */
     public static void setCycleLength(float length) {
         cycleLength = length;
     }
 
+    /**
+     * Determines whether the object should collide with the specified game object.
+     * 
+     * @param other The other game object involved in the collision.
+     * @return True if the object should collide with the specified game object, otherwise false.
+     */
     @Override
     public boolean shouldCollideWith(GameObject other) {
         return other.getTag().equals(Avatar.getAvatarTag()) && isInGame;
     }
 
+    /**
+     * Handles the behavior when a collision occurs with another game object.
+     * 
+     * @param other The other game object involved in the collision.
+     * @param collision The collision information.
+     */
     @Override
     public void onCollisionEnter(GameObject other, Collision collision) {
         if (shouldCollideWith(other)) {

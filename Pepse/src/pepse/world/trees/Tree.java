@@ -39,6 +39,11 @@ public class Tree {
         fruits.addFruits(collection);
     }
 
+    /**
+     * Notifies the observer that the avatar has jumped.
+     * 
+     * @param newFruitColor The new color for the fruits.
+     */
     public void onAvatarJump(Color newFruitColor) {
         trunk.changeColor();
         leaves.rotate90Degrees();
