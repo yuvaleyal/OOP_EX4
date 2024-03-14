@@ -6,8 +6,6 @@ package pepse.world;
 public interface JumpObserver {
     /**
      * This method is called when the avatar jumps.
-     * 
-     * @param deltaTime The time elapsed since the last jump event.
      */
     void onAvatarJump();
 }
