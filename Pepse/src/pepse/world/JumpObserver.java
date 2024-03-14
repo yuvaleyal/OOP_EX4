@@ -9,7 +9,7 @@ public interface JumpObserver {
      * 
      * @param deltaTime The time elapsed since the last jump event.
      */
-    void onAvatarJump(float deltaTime);
+    void onAvatarJump();
 }
 /**
  * The JumpSubject interface defines the contract for the subject (avatar) that other classes can observe.
