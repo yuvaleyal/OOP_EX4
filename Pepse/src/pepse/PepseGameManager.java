@@ -97,7 +97,7 @@ public class PepseGameManager extends GameManager implements JumpObserver {
         }
     }
 
-    public static Color randomColor() {
+    private static Color randomColor() {
         Random random = new Random();
         return new Color(random.nextInt(0, MAX_COLOR), random.nextInt(0, MAX_COLOR),
                 random.nextInt(0, MAX_COLOR));
