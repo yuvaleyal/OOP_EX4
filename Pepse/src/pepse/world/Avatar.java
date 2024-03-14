@@ -7,11 +7,13 @@ import danogl.gui.rendering.AnimationRenderable;
 import danogl.gui.rendering.Renderable;
 import danogl.util.Vector2;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents the avatar character in the game.
  */
-public class Avatar extends GameObject {
+public class Avatar extends GameObject implements JumpSubject{
     private final static float AVATARSIZE = 50f;
     private final static String AVATERORIGINALPIC = "Pepse\\src\\pepse\\assets\\assets\\idle_0.png";
     private static final float GRAVITY = 600;
@@ -22,6 +24,7 @@ public class Avatar extends GameObject {
     private final float JUMPCOST = 10f;
     private final float ANIMATINGTIME = 0.2f;
     private final float MAXENERGY = 100;
+    private List<JumpObserver> observers = new ArrayList<>();
     private final String[] IDLEPICS = new String[] {
             "Pepse\\src\\pepse\\assets\\assets\\idle_0.png",
             "Pepse\\src\\pepse\\assets\\assets\\idle_1.png",
@@ -87,6 +90,35 @@ public class Avatar extends GameObject {
     }
 
     /**
+     * Registers an observer to receive notifications about avatar jumps.
+     * 
+     * @param observer The observer to be registered.
+     */
+    @Override
+    public void registerObserver(JumpObserver observer){
+        observers.add(observer);
+    }
+
+    /**
+     * Removes an observer from the list of registered observers.
+     * 
+     * @param observer The observer to be removed.
+     */
+    @Override
+    public void removeObserver(JumpObserver observer) {
+        observers.remove(observer);
+    }
+
+    /**
+     * Notifies all registered observers when the avatar jumps.
+     */
+    @Override
+    public void notifyObservers() {
+        for (JumpObserver observer : observers) {
+            observer.onAvatarJump();
+        }
+    }
+    /**
      * Updates the avatar's state based on the input and time elapsed.
      * 
      * @param deltaTime The time elapsed since the last update.
@@ -121,6 +153,7 @@ public class Avatar extends GameObject {
                 this.energy = this.energy - JUMPCOST;
                 flag = 1;
                 this.renderer().setRenderable(jumpingAnimationRenderable);
+                this.notifyObservers();
             }
         }
         if (getVelocity().y() != 0) {
