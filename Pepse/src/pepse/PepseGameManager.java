@@ -15,6 +15,7 @@ import danogl.util.Vector2;
 import pepse.world.Sky;
 import pepse.world.Avatar;
 import pepse.world.Block;
+import pepse.world.EnergyDisplay;
 import pepse.world.Terrain;
 import pepse.world.daynight.Night;
 import pepse.world.daynight.Sun;
@@ -50,6 +51,8 @@ public class PepseGameManager extends GameManager {
         Vector2 pos = new Vector2(20,terrain.groundHeightAt(20) - Block.getSize());
         Avatar avater = new Avatar(pos, inputListener, imageReader);
         gameObjects().addGameObject(avater);
+        EnergyDisplay display = new EnergyDisplay(avater::getEnergy);
+        gameObjects().addGameObject(display, Layer.UI);
     }
 
     public static void main(String[] args) {

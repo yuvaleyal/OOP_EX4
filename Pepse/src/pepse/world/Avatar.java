@@ -14,7 +14,7 @@ public class Avatar extends GameObject{
     private final static String AVATERORIGINALPIC = "Pepse\\src\\pepse\\assets\\assets\\idle_0.png";
     private static final float GRAVITY = 600;
     private static final float VELOCITY_X = 400;
-    private static final float VELOCITY_Y = -250;
+    private static final float VELOCITY_Y = -300;
     private final float RUNNINGCOST = 0.5f;
     private final float JUMPCOST = 10f;
     private final float ANIMATINGTIME = 0.2f;
@@ -112,7 +112,14 @@ public class Avatar extends GameObject{
             flag = 1;
         }
         if (flag == 0){
-            this.energy++;
+            if (this.energy < MAXENERGY){
+                if (this.energy + 1 > MAXENERGY){
+                    this.energy = MAXENERGY;
+                }
+                else{
+                    this.energy++;
+                }
+            }
             this.renderer().setRenderable(idleAnimationRenderable);
         }
     }
@@ -124,5 +131,9 @@ public class Avatar extends GameObject{
         else{
             this.energy = this.energy + energyToGain;
         }
+    }
+
+    public float getEnergy(){
+        return this.energy;
     }
 }
