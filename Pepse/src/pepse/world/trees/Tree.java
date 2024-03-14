@@ -1,7 +1,5 @@
 package pepse.world.trees;
 
-import java.util.HashSet;
-
 import danogl.collisions.GameObjectCollection;
 import danogl.util.Vector2;
 
@@ -16,7 +14,7 @@ public class Tree {
     /**
      * Constructs a tree with the specified height, number of leaves, and position.
      * 
-     * @param height       The height of the tree trunk.
+     * @param height      The height of the tree trunk.
      * @param numOfLeaves The number of leaves on the tree.
      * @param placeToPut  The position to place the tree.
      */

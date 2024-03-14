@@ -6,6 +6,8 @@ import java.util.Random;
 
 import danogl.collisions.GameObjectCollection;
 import danogl.util.Vector2;
+import pepse.PepseGameManager;
+
 /**
  * Represents a collection of fruits in the game.
  */
@@ -15,9 +17,10 @@ public class Fruits {
     private List<Fruit> fruits;
 
     /**
-     * Constructs a collection of fruits with the specified number of fruits and bottom-middle position.
+     * Constructs a collection of fruits with the specified number of fruits and
+     * bottom-middle position.
      * 
-     * @param numOfFruits The number of fruits to generate.
+     * @param numOfFruits  The number of fruits to generate.
      * @param bottomMiddle The bottom-middle position for arranging the fruits.
      */
     public Fruits(int numOfFruits, Vector2 bottomMiddle) {
@@ -41,7 +44,8 @@ public class Fruits {
     /**
      * Adds the fruits to the specified game object collection.
      * 
-     * @param collection The game object collection to which the fruits will be added.
+     * @param collection The game object collection to which the fruits will be
+     *                   added.
      */
     public void addFruits(GameObjectCollection collection) {
         for (Fruit fruit : fruits) {

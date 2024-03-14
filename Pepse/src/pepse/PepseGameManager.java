@@ -21,6 +21,7 @@ import pepse.world.daynight.Night;
 import pepse.world.daynight.Sun;
 import pepse.world.daynight.SunHalo;
 import pepse.world.trees.Flora;
+import pepse.world.trees.Fruit;
 import pepse.world.trees.Tree;
 
 /**
@@ -39,9 +40,9 @@ public class PepseGameManager extends GameManager {
     /**
      * Initializes the Pepse game.
      * 
-     * @param imageReader     The image reader for loading game images.
-     * @param soundReader     The sound reader for loading game sounds.
-     * @param inputListener   The user input listener for handling input events.
+     * @param imageReader      The image reader for loading game images.
+     * @param soundReader      The sound reader for loading game sounds.
+     * @param inputListener    The user input listener for handling input events.
      * @param windowController The window controller for managing the game window.
      */
     @Override
@@ -75,6 +76,7 @@ public class PepseGameManager extends GameManager {
         Flora flora = new Flora(x -> terrain.groundHeightAt(x));
         List<Tree> trees = flora.createInRange(0, (int) windowDimensions.x());
         addTreesToGame(trees);
+        Fruit.setCycleLength(CYCLELENGTH);
     }
 
     private void addTreesToGame(List<Tree> trees) {

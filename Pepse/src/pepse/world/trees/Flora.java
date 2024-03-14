@@ -13,7 +13,7 @@ import pepse.world.Block;
  * Represents flora in the game, including trees.
  */
 public class Flora {
-    private static final int MAX_HEIGHT = 10;
+    private static final int MAX_HEIGHT = 4;
     private static final int NUM_OF_LEAVES = 7;
     private Function<Float, Float> terrainHeight;
 
