@@ -33,7 +33,7 @@ public class PepseGameManager extends GameManager {
         Vector2 windowDimensions = windowController.getWindowDimensions();
         GameObject sky = Sky.create(windowDimensions);
         gameObjects().addGameObject(sky, Layer.BACKGROUND);
-        int seed = (int)new Random().nextGaussian();
+        int seed = (int)new Random().nextInt();
         Terrain terrain = new Terrain(windowDimensions, seed);
         List<Block> list_of_blocks = terrain.createInRange
         (0, (int)windowController.getWindowDimensions().x());
