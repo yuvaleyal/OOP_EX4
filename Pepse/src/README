@@ -7,14 +7,25 @@ we created the Trees package using the following classes:
     a trunk (instanse of Trunk)
     leaves (instanse of Leaves)
     fruits (instanse of Fruits)
-3. Trunk: this class represents the trunk of a tree, and contains functions that add the trunk to the game objects, changes its color and provide information regarding its location. 
-4. Leaves and Fruits are classes conteining 1 (non-final) field each - a List of objects of Leaf and Fruit, respectively. this classes makes applying the same method on all of its objects easier and more readble. this classes also handle the rndomizing of creating the elements they hold.
-5. Leaf: a class representing a single leaf. this class handles the things that affects each leaf in a different way, like the moving in the wind effect.
-6. Fruit: a class representing a single fruit. like the Leaf class, this class handles the things that affects each fruit in a different way. in this instanse - its collisions with the avatar.
+3. Trunk: this class represents the trunk of a tree, and contains functions that add 
+the trunk to the game objects, changes its color and provide information regarding its 
+location. 
+4. Leaves and Fruits are classes conteining 1 (non-final) field each - a List of objects 
+of Leaf and Fruit, respectively. this classes makes applying the same method on all of 
+its objects easier and more readble. this classes also handle the rndomizing of creating 
+the elements they hold.
+5. Leaf: a class representing a single leaf. this class handles the things that affects 
+each leaf in a different way, like the moving in the wind effect.
+6. Fruit: a class representing a single fruit. like the Leaf class, this class handles 
+the things that affects each fruit in a different way. in this instanse - its collisions 
+with the avatar.
 
-in short, the Flora class creates a List of Tree insatnces. a Tree contains a Trunk instace, a Leaves instace and a Fruits instace.
+in short, the Flora class creates a List of Tree insatnces. a Tree contains a Trunk 
+instace, a Leaves instace and a Fruits instace.
 Leaves contains a List of Leaf instaces, and Fruits contains a List of Fruit instaces.
 
 The design paterns we used are:
-1. Facade: the Tree class wraps and handles all of the tree logic, and its the only one (except Flora) that is accessed from the PepseGameManager class.
-2. Observer: it's, in fact, the PepseGameManager that is the Observer, but the Observer design pattern is used to affect the Tree visuals when the Avatar jumps.
+1. Facade: the Tree class wraps and handles all of the tree logic, and its the only one 
+(except Flora) that is accessed from the PepseGameManager class.
+2. Observer: it's, in fact, the PepseGameManager that is the Observer, but the Observer 
+design pattern is used to affect the Tree visuals when the Avatar jumps.
