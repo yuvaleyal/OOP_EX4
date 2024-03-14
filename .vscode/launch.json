@@ -1,0 +1,56 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "AirEarthWater",
+            "request": "launch",
+            "mainClass": "AirEarthWater",
+            "projectName": "OOP_EX4_fe9aeab8"
+        },
+        {
+            "type": "java",
+            "name": "Billiards",
+            "request": "launch",
+            "mainClass": "Billiards",
+            "projectName": "OOP_EX4_fe9aeab8"
+        },
+        {
+            "type": "java",
+            "name": "ManyManyBalls",
+            "request": "launch",
+            "mainClass": "ManyManyBalls",
+            "projectName": "OOP_EX4_fe9aeab8"
+        },
+        {
+            "type": "java",
+            "name": "Platformer",
+            "request": "launch",
+            "mainClass": "Platformer",
+            "projectName": "OOP_EX4_fe9aeab8"
+        },
+        {
+            "type": "java",
+            "name": "SimpleWindow",
+            "request": "launch",
+            "mainClass": "SimpleWindow",
+            "projectName": "OOP_EX4_fe9aeab8"
+        },
+        {
+            "type": "java",
+            "name": "PepseGameManager",
+            "request": "launch",
+            "mainClass": "pepse.PepseGameManager",
+            "projectName": "OOP_EX4_fe9aeab8"
+        }
+    ]
+}
