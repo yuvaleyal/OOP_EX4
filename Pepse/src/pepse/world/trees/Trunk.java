@@ -59,6 +59,9 @@ public class Trunk {
         return new Vector2(topLeftCorner.x(), topLeftCorner.y());
     }
 
+    /**
+     * Changes the color of the trunk blocks to a new color.
+     */
     public void changeColor() {
         Color newColor = ColorSupplier.approximateColor(BASIC_COLOR);
         for (Block block : trunk) {

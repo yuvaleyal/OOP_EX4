@@ -59,6 +59,9 @@ public class Leaves {
         }
     }
 
+    /**
+     * Rotates all the leaves by 90 degrees.
+     */
     public void rotate90Degrees() {
         for (Leaf leaf : leaves) {
             float curAngle = leaf.renderer().getRenderableAngle();

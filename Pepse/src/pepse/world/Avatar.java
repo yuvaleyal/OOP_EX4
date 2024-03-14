@@ -165,7 +165,7 @@ public class Avatar extends GameObject implements JumpSubject{
                     this.energy = MAXENERGY;
                 }
                 else {
-                    this.energy += 0.1; //////////////
+                    this.energy ++;
                 }
             }
             this.renderer().setRenderable(idleAnimationRenderable);
