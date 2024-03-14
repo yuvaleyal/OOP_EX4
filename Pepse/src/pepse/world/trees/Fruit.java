@@ -1,13 +1,13 @@
 package pepse.world.trees;
 
 import java.awt.Color;
+import java.util.Random;
 
 import danogl.GameObject;
 import danogl.collisions.Collision;
 import danogl.components.ScheduledTask;
 import danogl.gui.rendering.OvalRenderable;
 import danogl.util.Vector2;
-import pepse.PepseGameManager;
 import pepse.world.Avatar;
 import pepse.world.Block;
 
@@ -15,7 +15,6 @@ import pepse.world.Block;
  * Represents a fruit block in the game.
  */
 public class Fruit extends Block {
-    private static final Color FRUIT_COLOR = new Color(133, 67, 11);
     private static final int ENERGY_FROM_EATING = 10;
     private static float cycleLength;
     private boolean isInGame;
@@ -25,8 +24,8 @@ public class Fruit extends Block {
      * 
      * @param topLeftCorner The top-left corner position of the fruit block.
      */
-    public Fruit(Vector2 topLeftCorner) {
-        super(topLeftCorner, new OvalRenderable(FRUIT_COLOR));
+    public Fruit(Vector2 topLeftCorner, Color color) {
+        super(topLeftCorner, new OvalRenderable(color));
         isInGame = true;
     }
 

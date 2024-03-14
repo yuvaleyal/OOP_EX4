@@ -1,5 +1,7 @@
 package pepse.world.trees;
 
+import java.awt.Color;
+
 import danogl.collisions.GameObjectCollection;
 import danogl.util.Vector2;
 
@@ -18,11 +20,11 @@ public class Tree {
      * @param numOfLeaves The number of leaves on the tree.
      * @param placeToPut  The position to place the tree.
      */
-    public Tree(int height, int numOfLeaves, Vector2 placeToPut) {
+    public Tree(int height, int numOfLeaves, Vector2 placeToPut, Color fruitColor) {
         trunk = new Trunk(placeToPut, height);
         Vector2 trunkTop = trunk.getTopLeftCorner();
         leaves = new Leaves(numOfLeaves, trunkTop);
-        fruits = new Fruits(numOfLeaves, trunkTop);
+        fruits = new Fruits(numOfLeaves, trunkTop, fruitColor);
     }
 
     /**
