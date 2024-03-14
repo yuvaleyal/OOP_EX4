@@ -15,6 +15,8 @@ import danogl.util.Vector2;
 
 public class Leaves {
     private static final Random random = new Random();
+    private static final double SPAWNING_PROBABILITY = 0.6;
+    private static final int LEAVES_LAYER = -50;
     private List<Leaf> leaves;
 
     /**
@@ -31,7 +33,7 @@ public class Leaves {
         for (int i = 0; i < numOfLeaves; i++) {
             x = initialX;
             for (int j = 0; j < numOfLeaves; j++) {
-                if (random.nextDouble() < 0.6) {
+                if (random.nextDouble() < SPAWNING_PROBABILITY) {
                     leaves.add(new Leaf(new Vector2(x, y)));
                 }
                 x += leafSize;
@@ -43,7 +45,7 @@ public class Leaves {
 
     public void addLeaves(GameObjectCollection collection) {
         for (Leaf leaf : leaves) {
-            collection.addGameObject(leaf, Layer.FOREGROUND);
+            collection.addGameObject(leaf, LEAVES_LAYER);
         }
     }
 
