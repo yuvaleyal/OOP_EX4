@@ -1,5 +1,6 @@
 package pepse.world.trees;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,6 +16,7 @@ import pepse.world.Block;
 public class Flora {
     private static final int MAX_HEIGHT = 4;
     private static final int NUM_OF_LEAVES = 7;
+    private static final int MAX_COLOR = 256;
     private Function<Float, Float> terrainHeight;
 
     /**
@@ -36,14 +38,19 @@ public class Flora {
     public List<Tree> createInRange(int minX, int maxX) {
         List<Tree> trees = new ArrayList<>();
         Random random = new Random();
+        Color color = randomColor(random);
         for (float location = minX; location < maxX; location += Block.getSize()) {
             if (random.nextDouble() < 0.1) {
                 int height = random.nextInt(1, MAX_HEIGHT);
                 trees.add(new Tree(height, NUM_OF_LEAVES,
-                        new Vector2(location, terrainHeight.apply(location))));
+                        new Vector2(location, terrainHeight.apply(location)), color));
             }
         }
         return trees;
     }
 
+    private static Color randomColor(Random random) {
+        return new Color(random.nextInt(0, MAX_COLOR), random.nextInt(0, MAX_COLOR),
+                random.nextInt(0, MAX_COLOR));
+    }
 }

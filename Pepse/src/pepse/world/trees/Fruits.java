@@ -1,5 +1,6 @@
 package pepse.world.trees;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -23,7 +24,7 @@ public class Fruits {
      * @param numOfFruits  The number of fruits to generate.
      * @param bottomMiddle The bottom-middle position for arranging the fruits.
      */
-    public Fruits(int numOfFruits, Vector2 bottomMiddle) {
+    public Fruits(int numOfFruits, Vector2 bottomMiddle, Color color) {
         int fruitSize = Leaf.getSize();
         fruits = new ArrayList<Fruit>(numOfFruits * numOfFruits);
         float initialX = bottomMiddle.x() - ((numOfFruits - 1) / 2 * fruitSize);
@@ -33,7 +34,7 @@ public class Fruits {
             x = initialX;
             for (int j = 0; j < numOfFruits; j++) {
                 if (random.nextDouble() < SPAWNING_PROBABILITY) {
-                    fruits.add(new Fruit(new Vector2(x, y)));
+                    fruits.add(new Fruit(new Vector2(x, y), color));
                 }
                 x += fruitSize;
             }
