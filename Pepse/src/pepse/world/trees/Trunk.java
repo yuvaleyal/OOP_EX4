@@ -6,6 +6,7 @@ import danogl.collisions.Layer;
 import danogl.gui.rendering.RectangleRenderable;
 import danogl.gui.rendering.Renderable;
 import danogl.util.Vector2;
+import pepse.util.ColorSupplier;
 import pepse.world.Block;
 
 import java.awt.Color;
@@ -37,10 +38,11 @@ public class Trunk {
         topLeftCorner = new Vector2(x, y);
     }
 
-     /**
+    /**
      * Adds the trunk blocks to the specified game object collection.
      * 
-     * @param collection The game object collection to which the trunk blocks will be added.
+     * @param collection The game object collection to which the trunk blocks will
+     *                   be added.
      */
     public void addTrunk(GameObjectCollection collection) {
         for (Block block : trunk) {
@@ -48,12 +50,19 @@ public class Trunk {
         }
     }
 
-     /**
+    /**
      * Gets the top-left corner position of the trunk.
      * 
      * @return The top-left corner position of the trunk.
      */
     public Vector2 getTopLeftCorner() {
         return new Vector2(topLeftCorner.x(), topLeftCorner.y());
+    }
+
+    public void changeColor() {
+        Color newColor = ColorSupplier.approximateColor(BASIC_COLOR);
+        for (Block block : trunk) {
+            block.renderer().setRenderable(new RectangleRenderable(newColor));
+        }
     }
 }

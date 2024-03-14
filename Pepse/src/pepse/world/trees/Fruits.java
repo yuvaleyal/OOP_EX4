@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import danogl.collisions.GameObjectCollection;
+import danogl.gui.rendering.OvalRenderable;
 import danogl.util.Vector2;
 import pepse.PepseGameManager;
 
@@ -15,6 +16,7 @@ import pepse.PepseGameManager;
 public class Fruits {
     private static final Random random = new Random();
     private static final double SPAWNING_PROBABILITY = 0.3;
+    private static final Color INITIAL_COLOR = new Color(200, 20, 144);
     private List<Fruit> fruits;
 
     /**
@@ -24,7 +26,7 @@ public class Fruits {
      * @param numOfFruits  The number of fruits to generate.
      * @param bottomMiddle The bottom-middle position for arranging the fruits.
      */
-    public Fruits(int numOfFruits, Vector2 bottomMiddle, Color color) {
+    public Fruits(int numOfFruits, Vector2 bottomMiddle) {
         int fruitSize = Leaf.getSize();
         fruits = new ArrayList<Fruit>(numOfFruits * numOfFruits);
         float initialX = bottomMiddle.x() - ((numOfFruits - 1) / 2 * fruitSize);
@@ -34,7 +36,7 @@ public class Fruits {
             x = initialX;
             for (int j = 0; j < numOfFruits; j++) {
                 if (random.nextDouble() < SPAWNING_PROBABILITY) {
-                    fruits.add(new Fruit(new Vector2(x, y), color));
+                    fruits.add(new Fruit(new Vector2(x, y), INITIAL_COLOR));
                 }
                 x += fruitSize;
             }
@@ -51,6 +53,12 @@ public class Fruits {
     public void addFruits(GameObjectCollection collection) {
         for (Fruit fruit : fruits) {
             collection.addGameObject(fruit);
+        }
+    }
+
+    public void changeColor(Color color) {
+        for (Fruit fruit : fruits) {
+            fruit.renderer().setRenderable(new OvalRenderable(color));
         }
     }
 }

@@ -15,7 +15,7 @@ import pepse.world.Block;
  */
 public class Leaf extends Block {
     private static final Color BASIC_COLOR = new Color(50, 200, 30);
-    private static final float FINAL_ROTATING_ANGLE = 360f;
+    private static final float FINAL_ROTATING_ANGLE = 45f;
     private static final float TRANSITION_LENGTH = 2;
     private static final float MIN_WIDTH = 10f;
     private static final float MAX_WIDTH = 60f;

@@ -1,5 +1,6 @@
 package pepse;
 
+import java.awt.Color;
 import java.util.List;
 import java.util.Random;
 
@@ -16,6 +17,7 @@ import pepse.world.Sky;
 import pepse.world.Avatar;
 import pepse.world.Block;
 import pepse.world.EnergyDisplay;
+import pepse.world.JumpObserver;
 import pepse.world.Terrain;
 import pepse.world.daynight.Night;
 import pepse.world.daynight.Sun;
@@ -27,8 +29,10 @@ import pepse.world.trees.Tree;
 /**
  * Represents the game manager for the Pepse game.
  */
-public class PepseGameManager extends GameManager {
+public class PepseGameManager extends GameManager implements JumpObserver {
     private final int CYCLELENGTH = 30;
+    private static final int MAX_COLOR = 256;
+    private List<Tree> trees;
 
     /**
      * Constructs a PepseGameManager object.
@@ -70,19 +74,33 @@ public class PepseGameManager extends GameManager {
         gameObjects().addGameObject(sunHalo, Layer.BACKGROUND);
         Vector2 pos = new Vector2(20, terrain.groundHeightAt(20) - Block.getSize());
         Avatar avater = new Avatar(pos, inputListener, imageReader);
+        avater.registerObserver(this);
         gameObjects().addGameObject(avater);
         EnergyDisplay display = new EnergyDisplay(avater::getEnergy);
         gameObjects().addGameObject(display, Layer.UI);
         Flora flora = new Flora(x -> terrain.groundHeightAt(x));
-        List<Tree> trees = flora.createInRange(0, (int) windowDimensions.x());
+        trees = flora.createInRange(0, (int) windowDimensions.x());
         addTreesToGame(trees);
         Fruit.setCycleLength(CYCLELENGTH);
+    }
+
+    public void onAvatarJump() {
+        Color fruitColor = randomColor();
+        for (Tree tree : trees) {
+            tree.onAvatarJump(fruitColor);
+        }
     }
 
     private void addTreesToGame(List<Tree> trees) {
         for (Tree tree : trees) {
             tree.addTree(gameObjects());
         }
+    }
+
+    public static Color randomColor() {
+        Random random = new Random();
+        return new Color(random.nextInt(0, MAX_COLOR), random.nextInt(0, MAX_COLOR),
+                random.nextInt(0, MAX_COLOR));
     }
 
     /**

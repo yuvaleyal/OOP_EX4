@@ -23,9 +23,10 @@ public class Leaves {
     private List<Leaf> leaves;
 
     /**
-     * Constructs a collection of leaves with the specified number of leaves and bottom middle position.
+     * Constructs a collection of leaves with the specified number of leaves and
+     * bottom middle position.
      * 
-     * @param numOfLeaves The number of leaves.
+     * @param numOfLeaves  The number of leaves.
      * @param bottomMiddle The bottom middle position.
      */
     public Leaves(int numOfLeaves, Vector2 bottomMiddle) {
@@ -47,7 +48,7 @@ public class Leaves {
         setTransitions();
     }
 
-     /**
+    /**
      * Adds the leaves to the specified game object collection.
      * 
      * @param collection The game object collection to add the leaves to.
@@ -55,6 +56,13 @@ public class Leaves {
     public void addLeaves(GameObjectCollection collection) {
         for (Leaf leaf : leaves) {
             collection.addGameObject(leaf, LEAVES_LAYER);
+        }
+    }
+
+    public void rotate90Degrees() {
+        for (Leaf leaf : leaves) {
+            float curAngle = leaf.renderer().getRenderableAngle();
+            leaf.renderer().setRenderableAngle(curAngle + 90);
         }
     }
 
